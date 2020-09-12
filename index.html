@@ -28,25 +28,45 @@
 <main class="content">
 <section class="col-md-8"><!--BEGINNING OF CONTAINER-->
     <div class="weatherInfo p-1 mt-2">
-        <h1><span>City</span> -- <span>Date</span></h1>
-        <p>Temperature:</p>
-        <p>Humidity:</p>
-        <p>Wind Speed:</p>
-        <p>UV index:</p>
+        <h1><span id="cityTyped">City</span> -- (<span id="dateToday">Date</span>)</h1>
+        <p>Temperature: <span id="cityTemp"></span></p>
+        <p>Humidity: <span id="cityHumidity"></span></p>
+        <p>Wind Speed: <span id="cityWindSpeed"></span></p>
+        <p>UV index: <span id="cityUvIndex"></span> <span id="cityUvIndexIcon"></span></p>
     </div>
     <div class="fivedaycontainer mt-3 ml-1">
         <h3>5 day forecast</h3>
         <div class="row m-2">
             <div class="days col-sm m-1" id="day1">
-                <p><b>Day1</b></p>
-                <p>weather icon</p>
-                <p>Temp: in F</p>
-                <p>Humidity:</p>
+                <p id="dateDay1"><b>Day1</b></p>
+                <p id="weatherIconDay1">weather icon</p>
+                <p id="tempDay1">Temp in F:</p>
+                <p id="humidDay1">Humidity:</p>
             </div>
-            <div class="days col-md m-1" id="day2">day 2</div>
-            <div class="days col-md m-1" id="day3">day 3</div>
-            <div class="days col-md m-1" id="day4">day 4</div>
-            <div class="days col-md m-1" id="day5">day 5</div>
+            <div class="days col-md m-1" id="day2">
+                <p id="dateDay2"><b>Day2</b></p>
+                <p id="weatherIconDay2">weather icon</p>
+                <p id="tempDay2">Temp in F:</p>
+                <p id="humidDay2">Humidity:</p>
+            </div>
+            <div class="days col-md m-1" id="day3">
+                <p id="dateDay3"><b>Day3</b></p>
+                <p id="weatherIconDay3">weather icon</p>
+                <p id="tempDay3">Temp in F:</p>
+                <p id="humidDay3">Humidity:</p>
+            </div>
+            <div class="days col-md m-1" id="day4">
+                <p id="dateDay4"><b>Day4</b></p>
+                <p id="weatherIconDay4">weather icon</p>
+                <p id="tempDay4">Temp in F:</p>
+                <p id="humidDay4">Humidity:</p>
+            </div>
+            <div class="days col-md m-1" id="day5">
+                <p id="dateDay5"><b>Day5</b></p>
+                <p id="weatherIconDay5">weather icon</p>
+                <p id="tempDay5">Temp in F:</p>
+                <p id="humidDay5">Humidity:</p>     
+            </div>
         </div>
     </div>
 </section><!--END OF CONTAINER-->

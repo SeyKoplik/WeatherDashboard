@@ -27,16 +27,16 @@
 .sidebar {
     height: 100%;
     width: 220px;
-    top: 50px;
+    top: 45px;
+    padding-top: 2px;
     left: 0;
     background-color: #f1f1f1;
     position: fixed;
-    /* overflow: auto; */
     overflow-x: hidden;
   }
   
 .content {
-    margin-left: 250px;
+    margin-left: 230px;
     height: 800px;
     width: 1000px;
   }
