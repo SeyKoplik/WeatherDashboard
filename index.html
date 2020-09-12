@@ -8,7 +8,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
 
 </head>
@@ -16,11 +15,11 @@
 
 <header class="head"><h1>Weather Forecast Dashboard</h1></header>
 
-<div class="sidebar pl-1">
+<div class="sidebar pl-2">
     Search for a city:
-        <form>
-        <input type="text" placeholder="Type a city here">
-        <button class="mt-1">SEARCH</button>
+        <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
         </form>
         <p class="newCity"></p>
         <div><a href="#">New city</a></div>
@@ -31,7 +30,7 @@
 <main class="content">
 <section class="col-md-8"><!--BEGINNING OF CONTAINER-->
     <div class="weatherInfo p-1 mt-2">
-        <h5><strong><span id="cityTyped">City</span> -- (<span id="dateToday"></span>)</h5></strong></p>
+        <h2><strong><span id="cityTyped">City</span> -- (<span id="dateToday"></span>)</h2></strong></p>
         <p>Temperature: <span id="cityTemp"></span></p>
         <p>Humidity: <span id="cityHumidity"></span></p>
         <p>Wind Speed: <span id="cityWindSpeed"></span></p>
