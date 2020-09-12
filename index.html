@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Seychelle's 5 Day Weather Forecast</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<header class="head"><h1>Weather Forecast Dashboard</h1></header>
+
+<div class="sidebar pl-1">
+    Search for a city:
+        <form>
+        <input type="text" placeholder="Type a city here">
+        <button class="mt-1">SEARCH</button>
+        </form>
+        <p class="newCity"></p>
+        <div><a href="#">New city</a></div>
+        <div><a href="#">New city2</a></div>
+        <div><a href="#">New city3</a></div>
+</div>
+
+<main class="content">
+<section class="col-md-8"><!--BEGINNING OF CONTAINER-->
+    <div class="weatherInfo p-1 mt-2">
+        <h1><span>City</span> -- <span>Date</span></h1>
+        <p>Temperature:</p>
+        <p>Humidity:</p>
+        <p>Wind Speed:</p>
+        <p>UV index:</p>
+    </div>
+    <div class="fivedaycontainer mt-3 ml-1">
+        <h3>5 day forecast</h3>
+        <div class="row m-2">
+            <div class="days col-sm m-1" id="day1">
+                <p><b>Day1</b></p>
+                <p>weather icon</p>
+                <p>Temp: in F</p>
+                <p>Humidity:</p>
+            </div>
+            <div class="days col-md m-1" id="day2">day 2</div>
+            <div class="days col-md m-1" id="day3">day 3</div>
+            <div class="days col-md m-1" id="day4">day 4</div>
+            <div class="days col-md m-1" id="day5">day 5</div>
+        </div>
+    </div>
+</section><!--END OF CONTAINER-->
+</main>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
