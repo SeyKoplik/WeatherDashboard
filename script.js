@@ -1,7 +1,29 @@
 $(document).ready(function () {
     //posted date on current city
-    var datePosted = moment().format('MMMM Do, YYYY');
+    var datePosted = moment().format('MM/DD/YY)  ');
     $("#dateToday").text(datePosted);
+    //posted date on current city for day 1 of 5 day forecast
+    var dateOne = moment().add(1, 'day').format('MM/DD/YY');
+    $("#dateDay1").text(dateOne);
+    //posted date on current city for day 2 of 5 day forecast
+    var dateTwo = moment().add(2, 'days').format('MM/DD/YY');
+    $("#dateDay2").text(dateTwo);
+    //posted date on current city for day 3 of 5 day forecast
+    var dateThree = moment().add(3, 'days').format('MM/DD/YY');
+    $("#dateDay3").text(dateThree);
+    //posted date on current city for day 4 of 5 day forecast
+    var dateFour = moment().add(4, 'days').format('MM/DD/YY');
+    $("#dateDay4").text(dateFour);
+    //posted date on current city for day 5 of 5 day forecast
+    var dateFive = moment().add(5, 'days').format('MM/DD/YY');
+    $("#dateDay5").text(dateFive);
+
+    ///HOW TO POST A WEATHER ICON
+    var weatherIcon = $("<img/>");
+    weatherIcon.attr("src", "sun.png")
+    $("#dateToday").append(weatherIcon);
+    //===================================
+
     //pseudocode the weather forecast........
     //I enter a city in search bar and click submit 
     // Clicking submit adds the city into a list on the sidebar
@@ -34,6 +56,7 @@ $(document).ready(function () {
             var cityName = weatherData.name;
             //displays City name that has been chosen
             $("#cityTyped").html(cityName);
+            //take temp information to display what icon the weather is like
             // Create CODE HERE to calculate the temperature (converted from Kelvin)
             var foundCityTemp = ((weatherData.main.temp) - 273.15) * 1.80 + 32;
             console.log(foundCityTemp);
@@ -47,35 +70,38 @@ $(document).ready(function () {
             $("#cityWindSpeed").html(foundCityWindSpeed);
             ajaxCallUvIndex();
 
+            //had to wrap the other ajax call in a function to call for uvindex information
             function ajaxCallUvIndex() {
+                //needed to take latitude and longditude of city from previous ajax call
                 var cityLat = weatherData.coord.lat;
                 var cityLong = weatherData.coord.lon;
-
+                // used a different url to set ajax call for uv index
                 var queryURLuvi = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + cityLat + "&lon=" + cityLong
-                // We then created an AJAX call
                 $.ajax({
                     url: queryURLuvi,
                     method: "GET"
                 }).then(function (weatherUviData) {
                     var foundUvIndex = weatherUviData.value;
                     $("#cityUvIndex").html(foundUvIndex);
-                    if (foundUvIndex >=0 || foundUvIndex <=2){
+                    //then in order to display in different colors, we make statements for each range of ux index and adjust display attributes in css
+                    if (foundUvIndex >= 0 || foundUvIndex <= 2) {
                         $("#cityUvIndex").addClass("low");
                     }
-                    if (foundUvIndex >= 3 || foundUvIndex <=5) {
+                    if (foundUvIndex >= 3 || foundUvIndex <= 5) {
                         $("#cityUvIndex").addClass("medium");
                     }
-                    if (foundUvIndex >=6 || foundUvIndex <= 7) {
+                    if (foundUvIndex >= 6 || foundUvIndex <= 7) {
                         $("#cityUvIndex").addClass("high");
                     }
-                    if (foundUvIndex >=8 || foundUvIndex <= 10) {
+                    if (foundUvIndex >= 8 || foundUvIndex <= 10) {
                         $("#cityUvIndex").addClass("veryhigh");
                     }
-                    if (foundUvIndex >= 11){
+                    if (foundUvIndex >= 11) {
                         $("#cityUvIndex").addClass("extreme");
                     }
                 });
             }
+
         });
     }
     //I am presented with the following information
