@@ -69,6 +69,7 @@ $(document).ready(function () {
             var foundCityWindSpeed = weatherData.wind.speed;
             $("#cityWindSpeed").html(foundCityWindSpeed);
             ajaxCallUvIndex();
+            ajaxCallForecast();
 
             //had to wrap the other ajax call in a function to call for uvindex information
             function ajaxCallUvIndex() {
@@ -100,18 +101,42 @@ $(document).ready(function () {
                         $("#cityUvIndex").addClass("extreme");
                     }
                 });
-            }
+                     };  
 
-        });
-    }
+            function ajaxCallForecast() {
+                // var dailyForecast = ["1,2,3,4,5"];
+
+                var cityLat = weatherData.coord.lat;
+                var cityLong = weatherData.coord.lon;
+
+                var queryURLforecast = "https://api.openweathermap.org/data/2.5/onecall?lat=" + cityLat + "&lon=" + cityLong +"&exclude=minutely&appid=" + APIKey;
+                $.ajax({
+                    url: queryURLforecast,
+                    method: "GET"
+                }).then(function (weatherForecastData) {
+                    console.log(weatherForecastData);
+                    var avgDailyTemp = ((weatherForecastData.daily[1].temp.min) + (weatherForecastData.daily[1].temp.max)) / 2;
+                    var day1Temp = ((avgDailyTemp) - 273.15) * 1.80 + 32;
+                    console.log(day1Temp);
+                    // setting temp to display with two decimals
+                    var convertedDay1Temp = day1Temp.toFixed(2);
+                    console.log(convertedDay1Temp);
+                    $("#tempDay1").html(convertedDay1Temp + "&#8457;");
+                    var day1Humid = weatherForecastData.daily[1].humidity;
+                    $("#humidDay1").html("Humidity: " + day1Humid +"%");
+                    });
+                }
+
+        }); 
+        
+    };// --- end of function ajaxCallWeatherData Display
+
     //I am presented with the following information
     // City name posted
     // City temperature posted
     // City Wind Speed Posted
     // City UV index
     ajaxCallWeatherDataDisplay();
-
-
 
 
     //     console.log(convertTemp);
@@ -132,5 +157,4 @@ $(document).ready(function () {
 
     //     for(var i=0; i<)
     // }
-
-});
+}); // ------ END OF EVERYTHING
