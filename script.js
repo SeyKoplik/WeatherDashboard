@@ -25,7 +25,7 @@ $(document).ready(function () {
     // When I refresh the page, all the information is saved in local storage so I can click again
     //When I click on the cities that is on the list they display all the weather information that I require to be displayed
 
-    var newCityInput = "cavite" //<<!!!!!! $("#newCityInput").val();
+    var newCityInput = "Manila" //<<!!!!!! $("#newCityInput").val();
 
     //provide variable for api key for global use
     var APIKey = "3742e75c5eab1e1270af15a06e17b552";
