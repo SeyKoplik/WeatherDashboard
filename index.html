@@ -18,23 +18,24 @@
 <div class="sidebar pl-2">
     Search for a city:
         <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="newCityInput">
+        <button class="btn btn-outline-primary my-2 my-sm-0 mb-3" type="submit">Search</button>
         </form>
-        <p class="newCity"></p>
-        <div><a href="#">New city</a></div>
-        <div><a href="#">New city2</a></div>
-        <div><a href="#">New city3</a></div>
+        <div class="newCityList">
+            <a href="#">New city</a>
+            <a href="#">New city2</a>
+            <a href="#">New city3</a>
+        </div>
 </div>
 
 <main class="content">
 <section class="col-md-8"><!--BEGINNING OF CONTAINER-->
     <div class="weatherInfo p-1 mt-2">
-        <h2><strong><span id="cityTyped">City</span> -- (<span id="dateToday"></span>)</h2></strong></p>
+        <h3><strong><span id="cityTyped">City</span> -- (<span id="dateToday"></span>)</h3></strong></p>
         <p>Temperature: <span id="cityTemp"></span></p>
         <p>Humidity: <span id="cityHumidity"></span></p>
         <p>Wind Speed: <span id="cityWindSpeed"></span></p>
-        <p>UV index: <span id="cityUvIndex"></span> <span id="cityUvIndexIcon"></span></p>
+        <p>UV index: <span id="cityUvIndex"></span></p>
     </div>
     <div class="fivedaycontainer mt-3 ml-1">
         <h3>5 day forecast</h3>

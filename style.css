@@ -58,4 +58,62 @@
     }
   }
 
+  .newCityList a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+  }
+  
+  /* Active/current link */
+  .newCityList a.active {
+    background-color: rgba(49, 124, 236, 0.904);
+    color: white;
+  }
+  
+  /* Links on mouse-over */
+  .newCityList a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
+
+.low {
+      border-radius: 10px;
+      background-color: rgb(25, 207, 71);
+      padding: 5px;
+      font-size: 10px;
+      color: white;
+  }
+
+.medium {
+    border-radius: 10px;
+    background-color: yellow;
+    padding: 5px;
+    font-size: 10px;
+    color: white;
+}
+
+.high {
+    border-radius: 10px;
+    background-color: orange;
+    padding: 5px;
+    font-size: 10px;
+    color: white;
+}
+
+.veryhigh {
+    border-radius: 10px;
+    background-color: red;
+    padding: 5px;
+    font-size: 15px;
+    color: white;
+}
+
+.extreme {
+    border-radius: 10px;
+    background-color: rgb(150, 28, 150);
+    padding: 5px;
+    font-size: 15px;
+    color: white;
+}
 
