@@ -17,9 +17,9 @@
 
 <div class="sidebar pl-2">
     Search for a city:
-        <form class="form-inline">
+        <form class="form-inline" id="newCityForm">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="newCityInput">
-        <button class="btn btn-outline-primary my-2 my-sm-0 mb-3" type="submit">Search</button>
+        <button class="btn btn-outline-primary my-2 my-sm-0 mb-3" type="submit" id="searchBtn">Search</button>
         </form>
         <div class="newCityList">
             <a href="#">New city</a>
@@ -31,7 +31,7 @@
 <main class="content">
 <section class="col-md-8"><!--BEGINNING OF CONTAINER-->
     <div class="weatherInfo p-1 mt-2">
-        <h2><strong><span id="cityTyped">City</span> - (<span id="dateToday"></span></h2></strong></p>
+        <h2><strong><span id="cityTyped">City</span> - (<span id="dateToday"></span><span id="dateTodayIcon"></span></h2></strong></p>
         <p>Temperature: <span id="cityTemp"></span></p>
         <p>Humidity: <span id="cityHumidity"></span></p>
         <p>Wind Speed: <span id="cityWindSpeed"></span></p>

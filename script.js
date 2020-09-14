@@ -1,6 +1,6 @@
 $(document).ready(function () {
     //posted date on current city
-    var datePosted = moment().format('MM/DD/YY)  ');
+    var datePosted = moment().format('MM/DD/YY)    ');
     $("#dateToday").text(datePosted);
     //posted date on current city for day 1 of 5 day forecast
     var dateOne = moment().add(1, 'day').format('MM/DD/YY');
@@ -18,14 +18,70 @@ $(document).ready(function () {
     var dateFive = moment().add(5, 'days').format('MM/DD/YY');
     $("#dateDay5").text(dateFive);
     //pseudocode the weather forecast........
+//////========================== LOCALSTORAGESTUFF  =============
+//     var newCities = [];
+
+//     initialize();
+
+//     $("#searchButton").on("click", function(){
+
+//     function renderNewCities() {
+//         $(".newCityList").html("");
+//         for (var i=0;i<newCities.length; i++) {
+//             var newCity = newCities[i];
+//             var newLinkEl = $('<a></a>');
+//             var enteredValue = $(this).attr("#newCityInput").val();
+//             newLinkEl.text(enteredValue);
+//             newLinkEl.attr("data-index", i);
+//             $(".newCityList").append(newLinkEl);
+//         }
+//     }
+
+//     function initialize() {
+//         var storedCityName = JSON.parse(localStorage.getItem("cityNames"));
+
+//         if (storedCityName !== null){
+//             newCity = storedCityName;
+//         }
+
+//         renderNewCities();
+//     }
+
+//     function storeNewCities() {
+//         localStorage.setItem("cityNames", JSON.stringify(newCity));
+//     }
+
+//     $("#searchButton").on("click", function(event) {
+//         event.preventDefault();
+
+//         var newCityText = $(this).prev().val();
+//         $.trim(newCityText);
+
+//         if (newCityText === ""){
+//             return;
+//         }
+
+//         newCity.push(newCityText);
+//         newCityText.val("");
+        
+//         storeNewCities();
+//         renderNewCities();
+//     });
+// });
+///================== LOCALSTORAGE ==============
+
     //I enter a city in search bar and click submit 
     // Clicking submit adds the city into a list on the sidebar
     // city's 5 day forecast is posted
     // When I click on the cities that was added in search... I can do the same thing as the others
     // When I refresh the page, all the information is saved in local storage so I can click again
-    //When I click on the cities that is on the list they display all the weather information that I require to be displayed
 
-    var newCityInput = "Manila" //<<!!!!!! $("#newCityInput").val();
+
+//When I click on the cities that is on the list they display all the weather information that I require to be displayed
+$("#searchBtn").on("click", function(event) {
+    event.preventDefault();
+
+    var newCityInput = $("#newCityInput").val().trim();
 
     //provide variable for api key for global use
     var APIKey = "3742e75c5eab1e1270af15a06e17b552";
@@ -58,7 +114,7 @@ $(document).ready(function () {
             var iconurl = "http://openweathermap.org/img/wn/" + weatherIcon + "@2x.png";
             var newIcon = $('<img/>');
             newIcon.attr("src", iconurl);
-            $("#dateToday").append(newIcon);
+            $("#dateTodayIcon").replaceWith(newIcon);
             $("#cityTemp").html(convertedCityTemp + "&#8457;");
             var foundCityHumidity = weatherData.main.humidity;
             $("#cityHumidity").html(foundCityHumidity + "%");
@@ -175,6 +231,6 @@ $(document).ready(function () {
 
     //Run function to be presented with the weather info
     ajaxCallWeatherDataDisplay();
-
+})
 
 }); // ------ END OF EVERYTHING
