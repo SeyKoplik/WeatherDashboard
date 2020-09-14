@@ -16,20 +16,19 @@
 <header class="head"><h1>Weather Forecast Dashboard</h1></header>
 
 <div class="sidebar pl-2">
+    <!--SIDEBAR-->
     Search for a city:
         <form class="form-inline" id="newCityForm">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="newCityInput">
         <button class="btn btn-outline-primary my-2 my-sm-0 mb-3" type="submit" id="searchBtn">Search</button>
         </form>
         <div class="newCityList">
-            <a href="#">New city</a>
-            <a href="#">New city2</a>
-            <a href="#">New city3</a>
         </div>
 </div>
 
 <main class="content">
 <section class="col-md-8"><!--BEGINNING OF CONTAINER-->
+    <!--CURRENT WEATHER DATA-->
     <div class="weatherInfo p-1 mt-2">
         <h2><strong><span id="cityTyped">City</span> - (<span id="dateToday"></span><span id="dateTodayIcon"></span></h2></strong></p>
         <p>Temperature: <span id="cityTemp"></span></p>
@@ -37,6 +36,7 @@
         <p>Wind Speed: <span id="cityWindSpeed"></span></p>
         <p>UV index: <span id="cityUvIndex"></span></p>
     </div>
+    <!--5 DAY FORECAST INFO-->
     <div class="fivedaycontainer mt-3 ml-1">
         <h3>5 day forecast</h3>
         <div class="row m-2">

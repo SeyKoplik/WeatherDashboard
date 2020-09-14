@@ -17,12 +17,9 @@ $(document).ready(function () {
     //posted date on current city for day 5 of 5 day forecast
     var dateFive = moment().add(5, 'days').format('MM/DD/YY');
     $("#dateDay5").text(dateFive);
-    // When I click on the cities that is on the list they display all the weather information that I require to be displayed
-    //LOCALSTORAGE START???
+
+    //LOCALSTORAGE START
     var getCity = JSON.parse(localStorage.getItem('getCity')) || [];
-    //Run function to be presented with the weather info
-    // ajaxCallWeatherDataDisplay();
-    //declare new variable for parameter to add new cities
 
     // Clicking submit adds the city into a list on the sidebar
     function renderCity() {
@@ -35,9 +32,11 @@ $(document).ready(function () {
             $(".newCityList").append(a);
         };
     };
+
     //run the function to add new city on the sideline
     renderCity();
 
+    //Run function to be presented with the weather info
     function ajaxCallWeatherDataDisplay(newCityInput) {
         console.log(newCityInput)
         var APIKey = "3742e75c5eab1e1270af15a06e17b552";
@@ -85,9 +84,9 @@ $(document).ready(function () {
                     uvIndexDisplay();
                     //then in order to display in different colors, we make statements for each range of ux index and adjust display attributes in css
                     function uvIndexDisplay() {
+                        //have to pass number as a string to make sure to interpret data correctly, and float to account for the decimal amounts
                         var UV = parseFloat(foundUvIndex);
-                        console.log(foundUvIndex);
-                        console.log(UV);
+                        // reset attributes of result to be able to adjust to adding different classes
                         $("#cityUvIndex").attr("class", "");
                         if (UV >= '11') {
                             $("#cityUvIndex").addClass("extreme");
@@ -105,9 +104,9 @@ $(document).ready(function () {
             };
 
             function ajaxCallForecast() {
+                //nested ajax to use information from city above to apply to longditude and latitude attributes to adjust to pull information
                 var cityLat = weatherData.coord.lat;
                 var cityLong = weatherData.coord.lon;
-
                 var queryURLforecast = "https://api.openweathermap.org/data/2.5/onecall?lat=" + cityLat + "&lon=" + cityLong + "&exclude=minutely&appid=" + APIKey;
                 $.ajax({
                     url: queryURLforecast,
@@ -180,25 +179,18 @@ $(document).ready(function () {
         event.preventDefault();
         // information typed on search bar input here for city to display
         var newCityInput = $("#newCityInput").val().trim();
-        console.log(newCityInput)
         ajaxCallWeatherDataDisplay(newCityInput);
-        //provide variable for api key for global use
-
-        //wrap all ajax calls into a function to run
-
+        // use that input info for getCity variable
         getCity.push(newCityInput);
-
-        // renderCity();//<<<-- displays the one city on sidebar but nothing else
-
+        //save any new city typed in to search bar
         localStorage.setItem('getCity', JSON.stringify(getCity));
-
+        //display the cities in the sidebar
         renderCity();
-
-        // When I click on the cities that was added in search... I can do the same thing as the others
-        // When I refresh the page, all the information is saved in local storage so I can click again
-
     }); // --- ENDS SEARCH BUTTON CLICK
-
+    
+    // When I refresh the page, all the information is saved in local storage so I can click again
+    // When I click on the cities that is on the list they display all the weather information that I require to be displayed
+    // When I click on the cities that was added in search... I can do the same thing as the others
     $(document).on("click", ".city-link", function () { 
         var savedCity = $(this).attr("data-name");
         ajaxCallWeatherDataDisplay(savedCity);
