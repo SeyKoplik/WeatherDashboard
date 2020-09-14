@@ -81,24 +81,24 @@
       border-radius: 10px;
       background-color: rgb(25, 207, 71);
       padding: 5px;
-      font-size: 10px;
-      color: white;
+      font-size: 15px;
+      color: black;
   }
 
 .medium {
     border-radius: 10px;
-    background-color: yellow;
+    background-color: rgb(233, 233, 57);
     padding: 5px;
-    font-size: 10px;
-    color: white;
+    font-size: 15px;
+    color: black;
 }
 
 .high {
     border-radius: 10px;
     background-color: orange;
     padding: 5px;
-    font-size: 10px;
-    color: white;
+    font-size: 15px;
+    color: black;
 }
 
 .veryhigh {
