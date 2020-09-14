@@ -192,6 +192,8 @@ $(document).ready(function () {
 
         localStorage.setItem('getCity', JSON.stringify(getCity));
 
+        renderCity();
+
         // When I click on the cities that was added in search... I can do the same thing as the others
         // When I refresh the page, all the information is saved in local storage so I can click again
 
