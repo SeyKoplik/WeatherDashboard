@@ -24,7 +24,6 @@ $(document).ready(function () {
 //     initialize();
 
 //     $("#searchButton").on("click", function(){
-
 //     function renderNewCities() {
 //         $(".newCityList").html("");
 //         for (var i=0;i<newCities.length; i++) {
@@ -39,11 +38,9 @@ $(document).ready(function () {
 
 //     function initialize() {
 //         var storedCityName = JSON.parse(localStorage.getItem("cityNames"));
-
 //         if (storedCityName !== null){
 //             newCity = storedCityName;
 //         }
-
 //         renderNewCities();
 //     }
 
@@ -54,37 +51,31 @@ $(document).ready(function () {
 //     $("#searchButton").on("click", function(event) {
 //         event.preventDefault();
 
-//         var newCityText = $(this).prev().val();
-//         $.trim(newCityText);
-
-//         if (newCityText === ""){
+//         if (newCityInput === ""){
 //             return;
 //         }
 
-//         newCity.push(newCityText);
-//         newCityText.val("");
-        
+//         newCity.push(newCityInput);
+
 //         storeNewCities();
 //         renderNewCities();
 //     });
 // });
 ///================== LOCALSTORAGE ==============
-
     //I enter a city in search bar and click submit 
     // Clicking submit adds the city into a list on the sidebar
-    // city's 5 day forecast is posted
+
     // When I click on the cities that was added in search... I can do the same thing as the others
     // When I refresh the page, all the information is saved in local storage so I can click again
 
-
-//When I click on the cities that is on the list they display all the weather information that I require to be displayed
+// When I click on the cities that is on the list they display all the weather information that I require to be displayed
 $("#searchBtn").on("click", function(event) {
     event.preventDefault();
-
+    // information typed on search bar input here for city to display
     var newCityInput = $("#newCityInput").val().trim();
-
     //provide variable for api key for global use
     var APIKey = "3742e75c5eab1e1270af15a06e17b552";
+
     //wrap all ajax calls into a function to run
     function ajaxCallWeatherDataDisplay() {
         // Here we are building the URL we need to query the database
@@ -94,9 +85,6 @@ $("#searchBtn").on("click", function(event) {
             url: queryURLweather,
             method: "GET"
         }).then(function (weatherData) {
-            // Create CODE HERE to Log the queryURL
-            console.log(weatherData);
-            console.log(convertedCityTemp);
             //New variable to located city name in the ajax JSON
             var cityName = weatherData.name;
             //displays City name that has been chosen
@@ -104,13 +92,9 @@ $("#searchBtn").on("click", function(event) {
             //take temp information to display what icon the weather is like
             // Create CODE HERE to calculate the temperature (converted from Kelvin)
             var foundCityTemp = ((weatherData.main.temp) - 273.15) * 1.80 + 32;
-            console.log(foundCityTemp);
             // setting temp to display with two decimals
             var convertedCityTemp = foundCityTemp.toFixed(2);
-            console.log(convertedCityTemp);
-            console.log(weatherData);
             var weatherIcon = weatherData.weather[0].icon;
-            console.log(weatherIcon);
             var iconurl = "http://openweathermap.org/img/wn/" + weatherIcon + "@2x.png";
             var newIcon = $('<img/>');
             newIcon.attr("src", iconurl);
@@ -165,7 +149,6 @@ $("#searchBtn").on("click", function(event) {
                     method: "GET"
                 }).then(function (weatherForecastData) {
                     var weatherIcon1 = weatherForecastData.daily[1].weather[0].icon;
-                    console.log(weatherForecastData);
                     var iconurl1 = "http://openweathermap.org/img/wn/" + weatherIcon1 + ".png";
                     var newIcon1 = $('<img/>');
                     newIcon1.attr("src", iconurl1);
@@ -230,7 +213,34 @@ $("#searchBtn").on("click", function(event) {
     };// --- end of function ajaxCallWeatherDataDisplay
 
     //Run function to be presented with the weather info
-    ajaxCallWeatherDataDisplay();
-})
+
+// var cities = [];
+
+// function renderCity() {
+//     $(".newCityList").empty();
+//     for (var i=0; i < cities.length; i++) {
+//         var a = $("<a>");
+//         a.addClass("city-link");
+//         a.attr("data-name", cities[i]);
+//         a.text(cities[i]);
+//         $(".newCityList").append(a);
+//     };
+// };
+
+// renderCity();
+// When I click on the cities that is on the list they display all the weather information that I require to be displayed
+// $("#searchBtn").on("click", function(event) {
+//     event.preventDefault();
+//     // information typed on search bar input here for city to display
+//     var newCityInput = $("#newCityInput").val().trim();
+//     cities.push(newCityInput);
+//     renderCity();
+//     });
+
+// $(document).on("click", ".city-link", ajaxCallWeatherDataDisplay);
+// // renderCity();
+
+ajaxCallWeatherDataDisplay();
+});
 
 }); // ------ END OF EVERYTHING
