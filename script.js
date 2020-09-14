@@ -17,8 +17,6 @@ $(document).ready(function () {
     //posted date on current city for day 5 of 5 day forecast
     var dateFive = moment().add(5, 'days').format('MM/DD/YY');
     $("#dateDay5").text(dateFive);
-    //pseudocode the weather forecast........
-
     // When I click on the cities that is on the list they display all the weather information that I require to be displayed
     $("#searchBtn").on("click", function (event) {
         event.preventDefault();
@@ -26,7 +24,6 @@ $(document).ready(function () {
         var newCityInput = $("#newCityInput").val().trim();
         //provide variable for api key for global use
         var APIKey = "3742e75c5eab1e1270af15a06e17b552";
-
         //wrap all ajax calls into a function to run
         function ajaxCallWeatherDataDisplay() {
             // Here we are building the URL we need to query the database
@@ -57,7 +54,6 @@ $(document).ready(function () {
                 $("#cityWindSpeed").html(foundCityWindSpeed + " mph");
                 ajaxCallUvIndex();
                 ajaxCallForecast();
-
                 //had to wrap the other ajax call in a function to call for uvindex information
                 function ajaxCallUvIndex() {
                     //needed to take latitude and longditude of city from previous ajax call
@@ -69,7 +65,7 @@ $(document).ready(function () {
                         url: queryURLuvi,
                         method: "GET"
                     }).then(function (weatherUviData) {
-                        var foundUvIndex = weatherUviData.value;
+                        var foundUvIndex = weatherUviData.value.toFixed(1);
                         $("#cityUvIndex").html(foundUvIndex);
                         //then in order to display in different colors, we make statements for each range of ux index and adjust display attributes in css
                         if (foundUvIndex >= 0 || foundUvIndex <= 2) {
@@ -165,14 +161,9 @@ $(document).ready(function () {
 
         //Run function to be presented with the weather info
         ajaxCallWeatherDataDisplay();
-
-    // Clicking submit adds the city into a list on the sidebar
-
-    // When I click on the cities that was added in search... I can do the same thing as the others
-    // When I refresh the page, all the information is saved in local storage so I can click again
-
+        //declare new variable for parameter to add new cities
         var cities = [];
-        //to add the city to the list
+        // Clicking submit adds the city into a list on the sidebar
         function renderCity() {
             $(".newCityList").empty();
             for (var i = 0; i < cities.length; i++) {
@@ -183,43 +174,18 @@ $(document).ready(function () {
                 $(".newCityList").append(a);
             };
         };
-
+        //run the function to add new city on the sideline
         renderCity();
 
         cities.push(newCityInput);
 
-        renderCity();
-
         $(document).on("click", ".city-link", ajaxCallWeatherDataDisplay);
 
-    //////========================== LOCALSTORAGESTUFF  =============
-    //     var newCities = [];
+        renderCity();
 
-    //     initialize();
 
-    //     function initialize() {
-    //         var storedCityName = JSON.parse(localStorage.getItem("cityNames"));
-    //         if (storedCityName !== null){
-    //             newCity = storedCityName;
-    //         }
-    //         renderNewCities();
-    //     }
-
-    //     function storeNewCities() {
-    //         localStorage.setItem("cityNames", JSON.stringify(newCity));
-    //     }
-
-    //     $("#searchButton").on("click", function(event) {
-    //         event.preventDefault();
-    //         if (newCityInput === ""){
-    //             return;
-    //         }
-    //         newCity.push(newCityInput);
-    //         storeNewCities();
-    //         renderNewCities();
-    //     });
-    // });
-    ///================== LOCALSTORAGE ==============
+        // When I click on the cities that was added in search... I can do the same thing as the others
+        // When I refresh the page, all the information is saved in local storage so I can click again
 
     }); // --- ENDS SEARCH BUTTON CLICK
 
