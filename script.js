@@ -74,7 +74,7 @@ $(document).ready(function () {
                 var cityLat = weatherData.coord.lat;
                 var cityLong = weatherData.coord.lon;
                 // used a different url to set ajax call for uv index
-                var queryURLuvi = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + cityLat + "&lon=" + cityLong
+                var queryURLuvi = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + cityLat + "&lon=" + cityLong
                 $.ajax({
                     url: queryURLuvi,
                     method: "GET"
