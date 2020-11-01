@@ -1,4 +1,4 @@
-# WeatherDashboard
+# Web API -- Weather Dashboard
 
 ## Description
 Weather dashboard display provides weather information for a designated city within using openweathermap API to call on data that is provide for current weather and 5 day forecast of a given city. 
